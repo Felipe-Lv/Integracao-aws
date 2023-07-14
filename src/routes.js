@@ -3,7 +3,7 @@ const multer = require('multer')
 const multerConfig = require('./config/multer')
 const Post = require('./models/Post')
 const {
-    S3
+    S3 
 } = require("@aws-sdk/client-s3");
 
 
@@ -24,6 +24,7 @@ routes.get('/posts', async (req, res) => {
 
     return res.json(posts)
 })
+
 
 routes.post('/posts', multer(multerConfig).single('file'), async (req, res) => {
     const {originalname: name, size, key, location: url = ''} = req.file

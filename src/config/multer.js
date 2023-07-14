@@ -14,6 +14,9 @@ const s3 = new S3({
     }
 })
 
+const BucketRotas = 'diagnosticoProdutivo/'
+const BucketRotas2 = 'user2/'
+
 const storageTypes = {
     local: multer.diskStorage({
         destination: (req, file, cb) => {
@@ -38,7 +41,7 @@ const storageTypes = {
             crypto.randomBytes(16, (err, hash) => {
                 if (err) cb(err)
 
-                const fileName = `${hash.toString('hex')}-${file.originalname}`
+                const fileName = `${BucketRotas}${BucketRotas2}${hash.toString('hex')}-${file.originalname}`
 
                 cb(null, fileName)
             })
